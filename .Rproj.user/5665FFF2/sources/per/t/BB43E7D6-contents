@@ -1,0 +1,75 @@
+---
+title: "relatorio"
+output: html_document
+---
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+theme_set(theme_bw())
+
+library(boot)
+library(broom)
+
+knitr::opts_chunk$set(tidy = FALSE,
+                      fig.width = 6,
+                      fig.height = 5)
+
+```
+
+```{r}
+dados = read_csv(here::here("base_colunas.csv"),
+                  col_types = cols(
+                        Curso = col_character(),
+                        Timestamp = col_character(),
+                        qtd_h_dorme_semana_media = col_double(),
+                        qtd_h_dorme_fds_media = col_double(),
+                        qtd_disciplinas_cursando_semestre = col_double(),
+                        qtd_cafe_ontem = col_double(),
+                        qtd_segue_github = col_double(),
+                        qtd_seguidos_github = col_double(),
+                        aluno_conclusao_faltam_dois_periodos = col_character()
+                    )
+                 )
+
+dados = dados %>%
+  rename(
+    sono_semana = `qtd_h_dorme_semana_media`,
+    sono_fds = `qtd_h_dorme_fds_media`
+)
+```
+
+
+1. Qual o tamanho do impacto do curso no sono dos alunos de graduação e de pós graduação?
+
+IMPACTO1 = MEDIA QUANTO DORME NA SEMANA - MEDIA QUANTO DORME NO FDS
+
+```{r}
+
+dados = dados %>% 
+  mutate(impacto1 =  sono_semana - sono_fds)
+
+
+
+sumario = dados %>% 
+  summarise(media = mean(impacto1))
+
+
+
+
+sumario = dados %>% 
+  summarise(media = mean(impacto1))
+```
+
+**Em média os estudantes, independente do curso,  dormem 1,6 horas a mais no FDS**
+
+
+2. Como se compara o impacto dos dois cursos?
+
+
+```{r}
+
+
+
+```
+

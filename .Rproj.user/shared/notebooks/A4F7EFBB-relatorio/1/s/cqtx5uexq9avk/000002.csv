@@ -1,0 +1,10 @@
+"0","dados = dados %>%
+  rename(
+    sono_semana = `Quantas horas por noite você dorme DURANTE A SEMANA em média?`,
+    sono_fds = `Quantas horas por noite você dorme durante NO FIM DE SEMANA em média?`
+)
+"
+"2","Erro: Can't rename columns that don't exist.
+[31mx[39m Column `Quantas horas por noite você dorme DURANTE A SEMANA em média?` doesn't exist.
+[90mRun `rlang::last_error()` to see where the error occurred.[39m
+"
